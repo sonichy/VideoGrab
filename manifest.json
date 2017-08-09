@@ -1,0 +1,26 @@
+{
+	"manifest_version": 2,
+	"name": "VideoGrab",
+	"version": "1.1",
+	"description": "解析视频网页，抓取视频地址，在新标签页中播放。",
+	"background": {
+		"persistent": false,
+		"scripts": ["background.js"]
+	},
+	"content_scripts": [
+		{
+			"matches" : ["<all_urls>"],
+			"js": ["content.js"]
+		}
+	],
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_title": "VideoGrab"
+	},
+	"icons": {
+		"128": "icon.png",
+		"16": "icon.png"
+	},
+	"permissions": ["tabs", "<all_urls>", "activeTab","notifications"],	
+	"options_page" : "options.htm"
+}
