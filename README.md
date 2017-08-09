@@ -7,8 +7,8 @@
 <table>
 <tr><td>LOGO</td><td>站名</td><td>域名</td><td>支持情况</td></tr>
 <tr><td><img src=http://www.yinyuetai.com/mv/get-logo></td><td>音悦Tai</td><td><a href=http://www.yinyuetai.com target=_blank>yinyuetai.com</a></td><td>mp4</td></tr>
-<tr><td><img src=http://static.youku.com/youku/dist/img/find/yk-logo-1220.png></td><td>优酷</td><td><a href=http://www.youku.com target=_blank>youku.com</a></td><td>flv或mp4片段列表 + m3u8</td></tr>
-<tr><td><img src=http://img.hunantv.com/imgotv-channel/2582c1aa/imgotv-pub/component/header/logo.png></td><td>芒果tv</td><td><a href=http://www.mgtv.com target=_blank>mgtv.com</a></td><td>m3u8</td></tr>
+<tr><td><img src=http://static.youku.com/youku/dist/img/find/yk-logo-1220.png></td><td>优酷</td><td><a href=http://www.youku.com target=_blank>youku.com</a></td><td>flv或mp4片段列表 + m3u8(不能拖动进度)</td></tr>
+<tr><td><img src=http://img.hunantv.com/imgotv-channel/2582c1aa/imgotv-pub/component/header/logo.png></td><td>芒果tv</td><td><a href=http://www.mgtv.com target=_blank>mgtv.com</a></td><td>m3u8(能拖动进度)</td></tr>
 <tr><td><img src=http://css.tv.itc.cn/global/images/nav1/logo.gif></td><td>搜狐视频</td><td><a href=http://tv.sohu.com target=_blank>tv.sohu.com</a></td><td>mp4片段列表</td></tr>
 <tr><td><img src=qqv.png></td><td>腾讯视频</td><td><a href=http://v.qq.com target=_blank>v.qq.com</a></td><td>...</td></tr>
 <tr><td><img src=56.png></td><td>56</td><td><a href=http://www.56.com target=_blank>56.com</a></td><td>...</td></tr>
