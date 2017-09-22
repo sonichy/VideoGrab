@@ -37,7 +37,8 @@ function xmlHttpRequest(url) {
 					if(Array.isArray(video[obj])){
 						var s='';
 						for(i=0; i<video[obj].length; i++){
-							s += video[obj][i].url + ';';
+							s += video[obj][i].url;
+							if(i<video[obj].length-1)s+=';';
 						}
 						var a = document.createElement('a');
 						a.textContent = obj;
