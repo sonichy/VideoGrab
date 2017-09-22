@@ -20,6 +20,9 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 		if(url.indexOf('tv.sohu.com')!=-1){
 			chrome.tabs.executeScript({ file : 'sohu.js' });
 		}
+		if(url.indexOf('iqiyi.com')!=-1){
+			chrome.tabs.executeScript({ file : 'iqiyi.js' });
+		}
 		//chrome.tabs.create({ url: chrome.runtime.getURL('result.htm') });
 	});
 });

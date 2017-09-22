@@ -36,7 +36,7 @@ function xmlHttpRequest1(url,s) {
             console.error(xhr.responseText);
         }
     }
-    xhr.open('GET', url, true);
+    xhr.open('GET', url, false);
     xhr.send();
 }
 
@@ -59,7 +59,7 @@ function xmlHttpRequest(url) {
             console.error(xhr.responseText);
         }
     }
-    xhr.open('GET', url, true);
+    xhr.open('GET', url, false);
     xhr.send();
 }
 
