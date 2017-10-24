@@ -1,6 +1,8 @@
 # Chrome扩展：视频抓取器
-![alt](preview.jpg)  
 解析视频网页，抓取视频地址，在新标签页中播放(mp4)或者在媒体播放器中播放(flv,m3u8...)，减少Flash播放视频CPU占用高的问题，让风扇安静下来，还可以无视广告。  
+
+![alt](preview.jpg)  
+
 致谢：视频提供商。  
 参考：[YouKuDownLoader](https://github.com/zhangn1985/ykdl)。  
 ### 支持站点  
@@ -13,3 +15,6 @@
 <tr><td><img src=qqv.png></td><td>腾讯视频</td><td><a href=http://v.qq.com target=_blank>v.qq.com</a></td><td>...</td></tr>
 <tr><td><img src=56.png></td><td>56</td><td><a href=http://www.56.com target=_blank>56.com</a></td><td>...</td></tr>
 </table>
+
+### 2.0 (2017-10)
+视频右键发送视频地址到本地播放器。

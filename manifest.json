@@ -1,18 +1,16 @@
 {
 	"manifest_version": 2,
 	"name": "VideoGrab",
-	"version": "1.1",
-	"description": "解析视频网页，抓取视频地址，在新标签页中播放。",
+	"version": "2.0",
+	"description": "解析视频网页，抓取视频地址，在新标签页中播放。视频右键发送到本地播放器播放。",
 	"background": {
 		"persistent": false,
 		"scripts": ["background.js"]
 	},
-	"content_scripts": [
-		{
-			"matches" : ["<all_urls>"],
-			"js": ["content.js"]
-		}
-	],
+	"content_scripts": [{
+		"matches" : ["<all_urls>"],
+		"js": ["content.js"]
+	}],
 	"browser_action": {
 		"default_icon": "icon.png",
 		"default_title": "VideoGrab"
@@ -21,6 +19,6 @@
 		"128": "icon.png",
 		"16": "icon.png"
 	},
-	"permissions": ["tabs", "<all_urls>", "activeTab","notifications"],	
+	"permissions": [ "tabs", "<all_urls>", "activeTab", "notifications", "contextMenus", "nativeMessaging" ],	
 	"options_page" : "options.htm"
 }
