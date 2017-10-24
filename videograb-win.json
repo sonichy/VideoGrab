@@ -1,0 +1,9 @@
+{
+	"name": "videograb",
+	"description": "Chrome sent video url to native app.",
+	"path": "D:\\video\\VSTLive\\VSTLive.exe",
+	"type": "stdio",
+	"allowed_origins": [
+		"chrome-extension://bbbmajjchdijejcojpakigpmbkbnfamk/"
+	]
+}
