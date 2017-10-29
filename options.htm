@@ -3,10 +3,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>视频抓取器</title>
 <style>
-body{padding:1em;}
-a{text-decoration:none;}
-h1{text-align:center;}
-p{text-indent:2em;font-size:17px;line-height:0.5em;}
+body{ padding:1em; }
+a{ text-decoration: none; }
+h1{ text-align: center; }
+p{ text-indent: 2em; font-size: 17px; -webkit-margin-before: 0em; -webkit-margin-after: 0em;}
 ol{font-size:17px;}
 table{border-collapse:collapse;}
 td{border:1px solid black;padding:5px 10px;text-align:center;}
@@ -37,7 +37,8 @@ td{border:1px solid black;padding:5px 10px;text-align:center;}
 <tr><td><img src=56.png></td><td>56</td><td><a href=http://www.56.com target=_blank>56.com</a></td><td>...</td></tr>
 </table>
 <h2>更新日志：</h2>
-<h2>2.0 (2017-10)</h2><ol><li>视频右键发送视频地址到本地播放器。</li></ol>
+	
+<h2>2.0 (2017-10)</h2><ol><li>视频右键发送视频地址到本地播放器。</li><li>增加对iframe内video元素的支持，允许获取iframe元素：chrome.tabs.executeScript({ file : 'normal.js', allFrames: true })</li></ol>
 <h2>1.1 (2017-08)</h2><ol><li>抓取搜狐视频成功。</li><li>标记点击的链接。</li></ol>
 <h2>1.0 (2017-07)</h2><ol><li>点击浏览器工具栏图标，在新标签页打开视频。</li><li>抓取音悦台视频成功。</li><li>抓取优酷视频成功。</li><li>不同网站共用js，改为每个网站独立调用js，方便编辑。</li></ol>
 </body>

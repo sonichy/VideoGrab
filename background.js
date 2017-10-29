@@ -2,7 +2,7 @@ var port = null;
 var nativeHostName = "videograb";
 
 function onDisconnected(){
-	console.log( "连接失败: " + chrome.runtime.lastError.message);
+	console.log( "断开连接: " + chrome.runtime.lastError.message);
 	port = null;
 }
 
@@ -14,15 +14,15 @@ function connectToNativeHost(){
 chrome.contextMenus.create({
 	"id" : "CMVideoGrab",
 	"title" : "播放视频",	
-	"contexts" : ["video"]
+	"contexts" : ["video","link"]
 });
 
 chrome.contextMenus.onClicked.addListener(function(info, tab){
 	//console.log(info);
 	if(info.menuItemId == 'CMVideoGrab'){
 		connectToNativeHost();
-		console.log(info.srcUrl);
-		port.postMessage(info.srcUrl);		
+		console.log(info.srcUrl);		
+		port.postMessage(info.srcUrl);
 	}
 });
 
@@ -46,8 +46,8 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 			chrome.tabs.executeScript({ file : 'iqiyi.js' });
 		}else if(url.indexOf('bilibili.com')!=-1){
 			chrome.tabs.executeScript({ file : 'bilibili.js' });
-		}else{
-			chrome.tabs.executeScript({ file : 'normal.js' });
+		}else{			
+			chrome.tabs.executeScript({ file : 'normal.js', allFrames: true });
 		}		
 	});
 });
