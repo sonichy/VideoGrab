@@ -1,26 +1,29 @@
-document.oncontextmenu = function(){
-	return true;
-}
+document.oncontextmenu = function() { return true; }
 
 var sources = document.getElementsByTagName('source');
 var videos = document.getElementsByTagName('video');
+var embeds = document.getElementsByTagName('embed');
 var url = '';
-console.log(sources);
-console.log(videos);
+//console.log(sources);
+//console.log(videos);
 if(sources.length != 0){
 	url = sources[0].src;
 }else if(videos.length != 0){
 	url = videos[0].src;
+}else if(embeds.length != 0){
+	url = embeds[0].src;
+	if(url.indexOf('.swf')!=-1) url = url.substr(url.indexOf('=')+1);
 }else{
 	var iframes = document.getElementsByTagName('iframe');
-	console.log(frames);
-	videos = iframes[0].contentWindow.document.getElementsByTagName('video');
-	url = videos[0].src;
+	//console.log(iframes);
+	if(iframes.length != 0){
+		videos = iframes[0].contentWindow.document.getElementsByTagName('video');
+		url = videos[0].src;
+		iframes[0].contentWindow.document.oncontextmenu = function() { return true; }
+	}
 }
 
-//if(url.indexOf('mp4')!=-1){
-//    window.open(url);
-//}else{
+if(url != ''){
     var domain = location.host;
     console.info(domain);
     var dialog = document.getElementById('dialog');
@@ -52,4 +55,4 @@ if(sources.length != 0){
     dialog.appendChild(a);
     var br = document.createElement('br');
     dialog.appendChild(br);
-//}
+}

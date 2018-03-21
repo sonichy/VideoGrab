@@ -1,3 +1,4 @@
+/*
 def get_macid():
     '''获取macid,此值是通过mac地址经过算法变换而来,对同一设备不变'''
     macid=''
@@ -6,12 +7,59 @@ def get_macid():
     for i in range(32):
         macid += list(chars)[random.randint(0,size-1)]
 return macid
-	
+
+def get_vf(url_params):
+    '''计算关键参数vf'''
+    sufix=''
+    for j in range(8):
+        for k in range(4):
+            v4 = 13 * (66 * k + 27 * j) % 35
+            if ( v4 >= 10 ):
+                v8 = v4 + 88
+            else:
+                v8 = v4 + 49
+            sufix += chr(v8)
+    url_params += sufix
+    m = hashlib.md5()
+    m.update(url_params.encode('utf-8'))
+    vf = m.hexdigest()
+    return vf
+
 tm = int(time.time() * 1000);//gettime(),毫秒
-host='http://cache.video.qiyi.com';
-src='/vps?tvid='+tvid+'&vid='+vid+'&v=0&qypid='+tvid+'_12&src=01012001010000000000&t='+str(tm)+'&k_tag=1&k_uid='+get_macid()+'&rs=1';
+var d = new Date();
+tm = d.getTime();
+
+host = 'http://cache.video.qiyi.com';
+src = '/vps?tvid=' + tvid + '&vid=' + vid + '&v=0&qypid=' + tvid + '_12&src=01012001010000000000&t=' + str(tm) + '&k_tag=1&k_uid=' + get_macid() + '&rs=1';
 vf = get_vf(src);
 req_url = host + src + '&vf=' + vf;
+*/
+
+//var newscript = document.createElement('script');
+//newscript.setAttribute('type','text/javascript');
+//newscript.setAttribute('src','md5.js');
+//var head = document.getElementsByTagName('head')[0];  
+//head.appendChild(newscript);
+
+function get_vf(url_params){
+    // 计算关键参数vf
+    sufix=''
+    for(j=0; j<8; j++){
+        for(k=0; k<4; k++){
+            v4 = 13 * (66 * k + 27 * j) % 35;
+			v8 = 0;
+            if ( v4 >= 10 ){
+                v8 = v4 + 88;
+			}else{
+                v8 = v4 + 49;
+			}
+            sufix += String.fromCharCode(v8);
+		}
+	}
+	url_params += sufix;
+	vf = hex_md5(url_params);
+    return vf;
+}
 
 console.clear();
 var domain = location.host;
@@ -93,7 +141,11 @@ for (i = 0; i < param.length; i++) {
 					videoId = vars[j].substring(9);
 					console.info(videoId);
 					var d = new Date();
-					var url = 'https://ups.youku.com/ups/get.json?vid=' + videoId + '&ccode=0401&client_ip=192.168.1.1&utid=oqikEO1b7CECAbfBdNNf1PM1&client_ts=' + d.getTime();
+					host = 'http://cache.video.qiyi.com';					
+					src = '/vps?tvid=' + tvid + '&vid=' + vid + '&v=0&qypid=' + tvid + '_12&src=01012001010000000000&t=' + d.getTime() + '&k_tag=1&k_uid=' + get_macid() + '&rs=1';
+					vf = get_vf(src);
+					console.log(vf);
+					url = host + src + '&vf=' + vf;
 					xmlHttpRequest(url);
 					break;
 				}

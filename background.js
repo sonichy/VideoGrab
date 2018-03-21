@@ -44,6 +44,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 			chrome.tabs.executeScript({ file : 'sohu.js' });
 		}else if(url.indexOf('iqiyi.com')!=-1){
 			chrome.tabs.executeScript({ file : 'iqiyi.js' });
+			chrome.tabs.executeScript({ file : 'md5.js' });
 		}else if(url.indexOf('bilibili.com')!=-1){
 			chrome.tabs.executeScript({ file : 'bilibili.js' });
 		}else{			
