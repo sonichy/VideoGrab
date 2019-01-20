@@ -5,7 +5,7 @@ You can play HLS(m3u8) in Chrome by [HLSPlayer](http://github.com/sonichy/HLSPla
 ![alt](preview.jpg)  
 
 ## Thanks
-Video provider.  
+Video providers.  
 ## Refercnce
 [YouKuDownLoader](https://github.com/zhangn1985/ykdl)  
 ## Supported Sites  
