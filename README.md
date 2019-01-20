@@ -22,7 +22,7 @@ Video providers.
 ### 2.0 (2017-10)
 Video right menu send to native video player.
 
-### Chrome Extension Start Up Native Software
+## Chrome Extension Start Up Native Software
 http://match-yang.blog.163.com/blog/static/2109902542014319103739996/  
 http://blog.csdn.net/ztmaster/article/details/52684772  
 1.Chrome Extension Support
