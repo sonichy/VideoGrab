@@ -1,13 +1,16 @@
-# Chrome扩展：视频抓取器
-解析视频网页，抓取视频地址，在新标签页中播放(mp4)或者在媒体播放器中播放(flv,m3u8...)，减少Flash播放视频CPU占用高的问题，让风扇安静下来，还可以无视广告。  
+# Chrome Extension: VideoGrab
+Analyze video webpage, and display video url in a box.  
+You can play HLS(m3u8) in Chrome by [HLSPlayer](http://github.com/sonichy/HLSPlayer) extention.
 
 ![alt](preview.jpg)  
 
-致谢：视频提供商。  
-参考：[YouKuDownLoader](https://github.com/zhangn1985/ykdl)。  
-### 支持站点  
+## Thanks
+Video provider.  
+## Refercnce
+[YouKuDownLoader](https://github.com/zhangn1985/ykdl)  
+## Supported Sites  
 <table>
-<tr><td>LOGO</td><td>站名</td><td>域名</td><td>支持情况</td></tr>
+<tr><td>LOGO</td><td>Name</td><td>Site</td><td>Condition</td></tr>
 <tr><td><img src=http://www.yinyuetai.com/mv/get-logo></td><td>音悦Tai</td><td><a href=http://www.yinyuetai.com target=_blank>yinyuetai.com</a></td><td>mp4</td></tr>
 <tr><td><img src=http://static.youku.com/youku/dist/img/find/yk-logo-1220.png></td><td>优酷</td><td><a href=http://www.youku.com target=_blank>youku.com</a></td><td>flv或mp4片段列表 + m3u8(不能拖动进度)</td></tr>
 <tr><td><img src=http://img.hunantv.com/imgotv-channel/2582c1aa/imgotv-pub/component/header/logo.png></td><td>芒果tv</td><td><a href=http://www.mgtv.com target=_blank>mgtv.com</a></td><td>m3u8(能拖动进度)</td></tr>
@@ -17,12 +20,12 @@
 </table>
 
 ### 2.0 (2017-10)
-视频右键发送视频地址到本地播放器。
+Video right menu send to native video player.
 
-### Chrome 扩展启动本地应用程序
+### Chrome Extension Start Up Native Software
 http://match-yang.blog.163.com/blog/static/2109902542014319103739996/  
 http://blog.csdn.net/ztmaster/article/details/52684772  
-1.Chrome扩展支持
+1.Chrome Extension Support
 <pre>
 manifest.json
 "permissions": [ "nativeMessaging" ]
@@ -32,7 +35,7 @@ var port = null;
 var nativeHostName = "videograb";
 
 function onDisconnected(){
-	console.log( "断开连接: " + chrome.runtime.lastError.message);
+	console.log( "Disconnect " + chrome.runtime.lastError.message);
 	port = null;
 }
 
@@ -56,7 +59,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab){
 	}
 });
 </pre>
-2.程序接收参数  
+2.Software Receive Parameters  
 Qt（C语音）
 <pre>
 QMediaPlayer *player;
@@ -66,9 +69,7 @@ if(Largs.length()>1){
     if(!Largs.at(1).contains("chrome-extension://")){
     QUrl url(Largs.at(1));
     open(url.toLocalFile());
-}else{
-    // 下面这段放在外面会导致调试时窗口出不来和从外部程序打开文件中断
-    // 接收Chrome扩展传来的数据
+}else{    
     int length = 0;
     //read the first four bytes (=> Length)
     //getwchar: receive char from stdin
@@ -92,9 +93,9 @@ if(Largs.length()>1){
     }
 }
 </pre>
-3.配置文件  
-path 参数为程序绝对路径
-allowed_origins 参数为扩展路径
+3.Config file  
+path: Software absolute path  
+allowed_origins: chrome-extension://*  
 <pre>
 videograb.json
 {
@@ -105,5 +106,5 @@ videograb.json
 	"allowed_origins": [ "chrome-extension://jiahehpnnhnnohoaknibedkbkdkibeho/"	]
 }
 </pre>
-Linux路径：～/.config/google-chrome/NativeMessagingHosts  
+Linux Path：～/.config/google-chrome/NativeMessagingHosts  
 Windows运行：REG ADD "HKCU\Software\Google\Chrome\NativeMessagingHosts\videograb" /ve /t REG_SZ /d "%~dp0videograb.json" /f
