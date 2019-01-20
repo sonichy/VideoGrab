@@ -6,7 +6,7 @@ You can play HLS(m3u8) in Chrome by [HLSPlayer](http://github.com/sonichy/HLSPla
 
 ## Thanks
 Video providers.  
-## Refercnce
+## Reference
 [YouKuDownLoader](https://github.com/zhangn1985/ykdl)  
 ## Supported Sites  
 <table>
@@ -60,7 +60,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab){
 });
 </pre>
 2.Software Receive Parameters  
-Qt（C语音）
+Qt（C++）
 <pre>
 QMediaPlayer *player;
 QStringList Largs = QApplication::arguments();
