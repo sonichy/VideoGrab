@@ -34,8 +34,8 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 			chrome.tabs.executeScript({ file : 'yinyuetai.js' });
 		}else if(url.indexOf('youku.com')!=-1){
 			chrome.tabs.executeScript({ file : 'youku.js' });
-		}else if(url.indexOf('mgtv.com')!=-1){
-			chrome.tabs.executeScript({ file : 'mgtv.js' });
+		//}else if(url.indexOf('mgtv.com')!=-1){
+		//	chrome.tabs.executeScript({ file : 'mgtv.js' });
 		}else if(url.indexOf('v.qq.com')!=-1){
 			chrome.tabs.executeScript({ file : 'qq.js' });
 		}else if(url.indexOf('tv.cctv.com')!=-1){

@@ -1,7 +1,7 @@
 {
 	"name": "videograb",
 	"description": "Chrome sent video url to native app.",
-	"path": "E:\\HY\\HTYMP\\HTYMP.exe",
+	"path": "E:\\HY\\Qt\\HTYMP\\HTYMP.exe",
 	"type": "stdio",
 	"allowed_origins": [
 		"chrome-extension://bbbmajjchdijejcojpakigpmbkbnfamk/"

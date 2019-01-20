@@ -1,7 +1,7 @@
 {
 	"name": "videograb",
-	"description": "Chrome sent video url to native app.",
-	"path": "/media/sonichy/job/HY/Linux/Qt/HTYMPAV/HTYMPAV",
+	"description": "Chrome send video url to native app.",
+	"path": "/media/sonichy/job/HY/Linux/Qt/HTYMP/HTYMP",
 	"type": "stdio",
 	"allowed_origins": [ "chrome-extension://jiahehpnnhnnohoaknibedkbkdkibeho/"	]
 }

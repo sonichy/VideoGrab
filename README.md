@@ -18,3 +18,92 @@
 
 ### 2.0 (2017-10)
 视频右键发送视频地址到本地播放器。
+
+### Chrome 扩展启动本地应用程序
+http://match-yang.blog.163.com/blog/static/2109902542014319103739996/  
+http://blog.csdn.net/ztmaster/article/details/52684772  
+1.Chrome扩展支持
+<pre>
+manifest.json
+"permissions": [ "nativeMessaging" ]
+</pre>
+<pre>
+var port = null;
+var nativeHostName = "videograb";
+
+function onDisconnected(){
+	console.log( "断开连接: " + chrome.runtime.lastError.message);
+	port = null;
+}
+
+function connectToNativeHost(){
+	port = chrome.runtime.connectNative(nativeHostName);
+	port.onDisconnect.addListener(onDisconnected);
+}
+
+chrome.contextMenus.create({
+	"id" : "CMVideoGrab",
+	"title" : "播放视频",
+	"contexts" : ["video","link"]
+});
+
+chrome.contextMenus.onClicked.addListener(function(info, tab){
+	//console.log(info);
+	if(info.menuItemId == 'CMVideoGrab'){
+		connectToNativeHost();
+		console.log(info.srcUrl);
+		port.postMessage(info.srcUrl);
+	}
+});
+</pre>
+2.程序接收参数  
+Qt（C语音）
+<pre>
+QMediaPlayer *player;
+QStringList Largs = QApplication::arguments();
+qDebug() << Largs;
+if(Largs.length()>1){
+    if(!Largs.at(1).contains("chrome-extension://")){
+    QUrl url(Largs.at(1));
+    open(url.toLocalFile());
+}else{
+    // 下面这段放在外面会导致调试时窗口出不来和从外部程序打开文件中断
+    // 接收Chrome扩展传来的数据
+    int length = 0;
+    //read the first four bytes (=> Length)
+    //getwchar: receive char from stdin
+    //putwchar: write char to stdout
+    for (int i = 0; i < 4; i++) {
+        length += getwchar();
+    }
+    //read the json-message
+    QString url = "";
+    for (int i = 0; i < length; i++) {
+        url += getwchar();
+    }
+    //浏览器端传来的数据会有一个双引号引在两端
+    url = url.mid(1, url.length()-2);
+    qDebug() << url;
+    if(url != ""){
+        ui->tableWidget->hide();
+        player->setMedia(QUrl(url));
+        player->play();
+        setWindowTitle(url);
+    }
+}
+</pre>
+3.配置文件  
+path 参数为程序绝对路径
+allowed_origins 参数为扩展路径
+<pre>
+videograb.json
+{
+	"name": "videograb",
+	"description": "Chrome send video url to native app.",
+	"path": "/media/sonichy/job/HY/Linux/Qt/HTYMP/HTYMP",
+	"type": "stdio",
+	"allowed_origins": [ "chrome-extension://jiahehpnnhnnohoaknibedkbkdkibeho/"	]
+}
+</pre>
+Linux路径：～/.config/google-chrome/NativeMessagingHosts  
+Windows运行：REG ADD "HKCU\Software\Google\Chrome\NativeMessagingHosts\videograb" /ve /t REG_SZ /d "%~dp0videograb.json" /f
